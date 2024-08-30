@@ -1,0 +1,62 @@
+/* Page Title */
+.page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Button Styles */
+
+.btn {
+    background-color: #ef6100;
+    color: #fff;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Search Bar */
+.search-input {
+    border: 2px solid #ef6100;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    width: 30%;
+}
+
+.search-input:focus {
+    border-color: #ef6100;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Table Styles */
+.table-custom {
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+.table-custom thead {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.table-custom th {
+    font-weight: 500;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-custom tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table-custom td {
+    vertical-align: middle;
+}
+a{
+    cursor: pointer;
+
+}

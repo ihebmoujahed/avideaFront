@@ -1,0 +1,12 @@
+<h1 mat-dialog-title class="dialog-title">Confirm Delete</h1>
+<div mat-dialog-content class="dialog-content">
+  <p class="dialog-text">Are you sure you want to delete ?</p>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-icon-button (click)="onCancel()" class="cancel-button">
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <button mat-icon-button color="primary" (click)="onConfirm()" class="confirm-button">
+    <mat-icon>check</mat-icon>
+  </button>
+</div>

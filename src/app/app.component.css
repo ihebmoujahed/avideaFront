@@ -1,0 +1,12 @@
+/*app compoenent css*/
+.app-container {
+  margin-left: 280px; 
+  transition: margin-left 0.3s ease;
+}
+
+.main-content {
+  padding: 20px;
+  background-color: #ffffff; 
+  min-height: 100vh;
+}
+

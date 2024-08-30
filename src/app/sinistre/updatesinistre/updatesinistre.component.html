@@ -1,0 +1,63 @@
+<div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Update Sinistre</h2>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="SinistreFrom" class="form-container"  (ngSubmit)="onSubmit()">
+               
+                <div *ngIf="isSubmitted && formErrors.length" class="alert alert-warning">
+                    <ul>
+                        <li *ngFor="let error of formErrors">{{ error }}</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numero_sinistre">Sinister Number :</label>
+                    <input id="numero_sinistre" formControlName="numero_sinistre" type="text" class="form-control">
+                    <div *ngIf="isFieldInvalid('numero_sinistre')" class="invalid-feedback">
+                        Sinister number is required.
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="date_accident">Accident Date :</label>
+                    <input id="date_accident" formControlName="date_accident" type="date" class="form-control">
+                    <div *ngIf="isFieldInvalid('date_accident')" class="invalid-feedback">
+                        Accident date is required.
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="date_creation">Creation Date :</label>
+                    <input id="date_creation" formControlName="date_creation" type="date" class="form-control">
+                    <div *ngIf="isFieldInvalid('date_creation')" class="invalid-feedback">
+                        Creation date is required.
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" formControlName="status" class="form-control">
+                        <option value="Ouvert" >Ouvert</option>
+                        <option value="Expertise">Expertise</option>
+                        <option value="Terminé">Terminé</option>
+                    </select>
+                    <div *ngIf="isFieldInvalid('status')" class="invalid-feedback">
+                        Status is required.
+                    </div>
+                </div>
+        
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

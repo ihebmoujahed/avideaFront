@@ -1,0 +1,33 @@
+<div class="d-flex" >
+  <aside class="sidebar d-none d-md-block" *ngIf="!routeService.isLoginPage()">
+      <div class="sidebar-header">
+          <div class="profile">
+              <img src="https://scontent.ftun1-2.fna.fbcdn.net/v/t39.30808-6/316254623_5614588435315395_48641670341126865_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=tUQjoh2wTqIQ7kNvgExhBLX&_nc_ht=scontent.ftun1-2.fna&oh=00_AYBCRc4ZdJEBhFs9gdia2RI_zERkNy4k8W0v9im-PfAb3g&oe=66D3A572" alt="Profile" class="profile-img" />
+              <div class="profile-info">
+                  <span class="profile-name">Iheb</span>
+                  <span class="profile-role">Moujahed</span>
+              </div>
+          </div>
+      </div>
+      <nav class="nav flex-column">
+          <a routerLink="/Dashboard" class="nav-link">
+              <i class="fas fa-home"></i> Home Page
+          </a>
+          <a routerLink="/contrat" class="nav-link">
+              <i class="fas fa-book"></i> Contract
+          </a>
+          <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-cog"></i> Sinister
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" routerLink="/totalSinister">Sinister</a></li>
+              </ul>
+          </div>
+          <a routerLink="/Login" class="nav-link" id="logout_sidebar_button" (click)="logout()">
+              <i class="fas fa-home"></i> Log Out
+          </a>
+      </nav>
+      
+  </aside>
+</div>
