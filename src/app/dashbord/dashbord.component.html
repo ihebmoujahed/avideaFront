@@ -1,0 +1,43 @@
+<div class="dashboard">
+  <div class="cards">
+    <div class="card">
+      <h2>Total Contracts</h2>
+      <p>{{ totalContrats }}</p>
+    </div>
+    <div class="card">
+      <h2>Total Sinister</h2>
+      <p>{{ totalSinistres }}</p>
+    </div>
+  </div>
+
+  <div class="table table-striped table-bordered table-hover table-custom">
+    <table>
+      <thead>
+        <tr>
+          <th>Sinister Number</th>
+          <th>Accident Date</th>
+          <th>Creation Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sinistre of sinistre">
+          <td>{{ sinistre.numero_sinistre }}</td>
+          <td>{{ sinistre.date_accident | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ sinistre.date_creation | date: 'dd/MM/yyyy' }}</td>
+          <td [ngClass]="{
+                      'red-class': sinistre.status === 'Open',
+                      'green-class': sinistre.status === 'Expertise',
+                      'blue-class': sinistre.status === 'Terminé' || sinistre.status === 'Termine'
+                  }">
+            {{ sinistre.status }}
+          </td>
+
+        </tr>
+        <tr *ngIf="dataSource.length === 0">
+          <td colspan="5">There are no contracts.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

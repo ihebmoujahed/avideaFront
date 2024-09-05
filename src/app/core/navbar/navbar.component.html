@@ -1,0 +1,28 @@
+<div class="d-flex">
+    <aside class="sidebar d-none d-md-block" *ngIf="!routeService.isLoginPage()">
+        <div class="sidebar-header">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Profile"
+                    class="profile-img" />
+                <div class="profile-info">
+                    <span class="profile-name">Iheb</span>
+                    <span class="profile-role">Moujahed</span>
+                </div>
+            </div>
+        </div>
+        <nav class="nav flex-column">
+            <a routerLink="/Dashboard" class="nav-link">
+                Home Page
+            </a>
+            <a routerLink="/contrat" class="nav-link">
+                Contract
+            </a>
+            <a class="nav-link" routerLink="/totalSinister">
+                Sinister
+            </a>
+            <a routerLink="/Login" class="nav-link" id="logout_sidebar_button" (click)="logout()">
+                Log Out
+            </a>
+        </nav>
+    </aside>
+</div>

@@ -1,0 +1,76 @@
+<div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+</div>
+<div id="excel">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">Sinister Management</h1>
+        <h1 class="page-title">{{numerocontract}}</h1>
+        <div class="d-flex">
+            <a (click)="exportexcel()">
+                <img src="https://img.icons8.com/?size=100&id=85417&format=png&color=ef6100" alt="" width="50px">
+            </a>
+        </div>
+    </div>
+    <div class="mb-4">
+        <input type="text" class="form-control search-input" placeholder="Search by Sinister Number"
+            [(ngModel)]="searchTerm" (ngModelChange)="filterSinistre()" />
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover table-custom">
+            <thead>
+                <tr style="text-align: center;">
+                    <th scope="col">Sinister Number</th>
+                    <th scope="col">Accident Date</th>
+                    <th scope="col">Creation Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sinistre of paginatedSinister" style="text-align: center;">
+                    <td><a (click)="detail(sinistre.id_sinistre)">{{ sinistre.numero_sinistre }}</a></td>
+                    <td>{{ sinistre.date_accident | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ sinistre.date_creation | date: 'dd/MM/yyyy' }}</td>
+                    <td [ngClass]="{
+                            'red-class': sinistre.status === 'Open',
+                            'green-class': sinistre.status === 'Expertise',
+                            'blue-class': sinistre.status === 'Terminé' || sinistre.status === 'Termine'
+                        }">
+                        {{ sinistre.status }}
+                    </td>
+                    <td>
+                        <a (click)="deleteSinsitre( sinistre.id_sinistre )">
+                            <mat-icon style="color: red; margin-right: 10px;">delete_forever</mat-icon>
+                        </a>
+                        <a (click)="updateContrat(sinistre.id_sinistre)">
+                            <mat-icon style="color: blue;">create</mat-icon>
+                        </a>
+                    </td>
+
+                </tr>
+                <tr *ngIf="filteredsinistre.length === 0">
+                    <td colspan="6" style="text-align: center;">No Sinister Found!</td>
+                </tr>
+        </table>
+        <nav class="d-flex justify-content-center mt-4" style="position: absolute;">
+            <ul class="pagination">
+                <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+                    <a class="page-link" (click)="handlePageChange(currentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li *ngFor="let pageNumber of [].constructor(totalPages); let i = index" class="page-item"
+                    [ngClass]="{'active': i + 1 === currentPage}">
+                    <a class="page-link" (click)="handlePageChange(i + 1)">{{ i + 1 }}</a>
+                </li>
+                <li class="page-item" [ngClass]="{'disabled': currentPage === totalPages}">
+                    <a class="page-link" (click)="handlePageChange(currentPage + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <router-outlet></router-outlet>
+</div>

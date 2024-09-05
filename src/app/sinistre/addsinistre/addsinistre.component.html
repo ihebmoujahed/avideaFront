@@ -1,0 +1,83 @@
+<div class="form-container">
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <section class="form-main" style="margin-bottom: 22px;">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputContract">Contract Number</label>
+        <select id="inputContract" (change)="onContractChange($event)" class="form-select"  style="height: 50px;">
+          <option selected disabled> Select Contract </option>
+
+          <option *ngFor="let contrat of contrat" [value]="contrat.id_contrat">
+            {{ contrat.numero_contrat }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-md-6"*ngIf="nom_issured !=undefined">
+        <label for="insuredName">Insured Name</label>
+        <input id="insuredName" type="text" class="form-control" placeholder="Insured Name" [defaultValue]="nom_issured " disabled >
+      </div>
+    </div>
+  </section>
+
+  <section class="form-main" *ngIf="nom_issured !=undefined">
+    <h2 class="form-title">Add New Sinister</h2>
+
+    <form [formGroup]="SinisterForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="numero_sinistre">Sinister Number</label>
+        <input id="numero_sinistre" formControlName="numero_sinistre" type="text" class="form-control"
+          [class.is-invalid]="isFieldInvalid('numero_sinistre')" />
+        <div *ngIf="isFieldInvalid('numero_sinistre')" class="invalid-feedback">
+          Please enter a valid Sinister number.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="date_accident">Accident Date</label>
+        <input id="date_accident" formControlName="date_accident" type="date" class="form-control"
+          [class.is-invalid]="isFieldInvalid('date_accident')" />
+        <div *ngIf="isFieldInvalid('date_accident')" class="invalid-feedback">
+          Please enter a valid Accident Date.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="date_creation">Creation Date</label>
+        <input id="date_creation" formControlName="date_creation" type="date" class="form-control"
+          [class.is-invalid]="isFieldInvalid('date_creation')" />
+        <div *ngIf="isFieldInvalid('date_creation')" class="invalid-feedback">
+          Please enter a Creation Date.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <input [disabled]="Submitted" id="status" formControlName="status" value="open" type="text" class="form-control"
+          [class.is-invalid]="isFieldInvalid('status')" />
+        <div *ngIf="isFieldInvalid('status')" class="invalid-feedback">
+          Please enter the Status.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="idContrat">Contract ID</label>
+        <input id="idContrat" formControlName="idContrat" type="text" class="form-control"
+          [class.is-invalid]="isFieldInvalid('idContrat')" />
+        <div *ngIf="isFieldInvalid('idContrat')" class="invalid-feedback">
+          Please enter a valid Contract ID.
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Add Sinister</button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </section>
+</div>

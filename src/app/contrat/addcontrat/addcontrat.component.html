@@ -1,0 +1,53 @@
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+<div class="container mt-5">
+  <h2 class="mb-4">Add New Contract</h2>
+  <form [formGroup]="contratForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="numero_contrat">Contract Number</label>
+      <input id="numero_contrat" formControlName="numero_contrat" type="text" class="form-control" [class.is-invalid]="isFieldInvalid('numero_contrat')"/>
+      <div *ngIf="isFieldInvalid('numero_contrat')" class="invalid-feedback">
+        Please enter a valid contract number.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="datedebut">Start Date</label>
+      <input id="datedebut" formControlName="datedebut" type="date" class="form-control" [class.is-invalid]="isFieldInvalid('datedebut')"/>
+      <div *ngIf="isFieldInvalid('datedebut')" class="invalid-feedback">
+        Please enter a valid start date.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="datefin">End Date</label>
+      <input id="datefin" formControlName="datefin" type="date" class="form-control" [class.is-invalid]="isFieldInvalid('datefin')"/>
+      <div *ngIf="isFieldInvalid('datefin')" class="invalid-feedback">
+        Please enter a valid end date.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nom_assure">Insured Name</label>
+      <input id="nom_assure" formControlName="nom_assure" type="text" class="form-control" [class.is-invalid]="isFieldInvalid('nom_assure')"/>
+      <div *ngIf="isFieldInvalid('nom_assure')" class="invalid-feedback">
+        Please enter the insured's name.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numero_immatriculation">Registration number</label>
+      <input id="numero_immatriculation" formControlName="numero_immatriculation" type="text" class="form-control" [class.is-invalid]="isFieldInvalid('numero_immatriculation')"/>
+      <div *ngIf="isFieldInvalid('numero_immatriculation')" class="invalid-feedback">
+        Please enter a valid registration number.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Contract</button>
+  </form>
+  <button type="button" class="btn btn-secondary" (click)="cancel()" style="margin-top: 22px;">Cancel</button>
+</div>
